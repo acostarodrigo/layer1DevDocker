@@ -16,13 +16,19 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Go manually
+ENV GO_VERSION=1.23.2
+RUN wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz && \
+    rm go$GO_VERSION.linux-amd64.tar.gz
+ENV PATH="/usr/local/go/bin:$PATH"
+
 # Install IPFS manually
 RUN wget https://dist.ipfs.io/go-ipfs/v0.18.1/go-ipfs_v0.18.1_linux-amd64.tar.gz && \
     tar xvfz go-ipfs_v0.18.1_linux-amd64.tar.gz && \
     cd go-ipfs && \
     bash install.sh && \
     cd .. && rm -rf go-ipfs go-ipfs_v0.18.1_linux-amd64.tar.gz
-
 
 # Clone your repositories
 WORKDIR /workspace
