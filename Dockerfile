@@ -21,7 +21,9 @@ ENV GO_VERSION=1.23.2
 RUN wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz && \
     rm go$GO_VERSION.linux-amd64.tar.gz
-ENV PATH="/usr/local/go/bin:$PATH"
+
+# Add Go and Go binaries to PATH
+ENV PATH="/usr/local/go/bin:/root/go/bin:$PATH"
 
 # Install IPFS manually
 RUN wget https://dist.ipfs.io/go-ipfs/v0.18.1/go-ipfs_v0.18.1_linux-amd64.tar.gz && \
