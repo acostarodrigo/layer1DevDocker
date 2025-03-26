@@ -16,12 +16,10 @@ service docker start || true
 docker pull blendergrid/blender || true
 
 # Setup Cosmos SDK node if not initialized
-if [ ! -d "$HOME/.janctiond" ]; then
-  cd /workspace/janctionLayer1Node
-  make install
-  make init
-  make testnet-add
-fi
+cd /workspace/janctionLayer1Node
+make install
+make init
+make testnet-add
 
 
 # Keep the container interactive
