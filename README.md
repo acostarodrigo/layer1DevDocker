@@ -11,7 +11,7 @@ docker build -t layer1_node .
 and execute it with privileges:
 
 ```
-docker run --rm -it \
+docker run -it \
   --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /root/.janctiond/renders:/root/.janctiond/renders \
