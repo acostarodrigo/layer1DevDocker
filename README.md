@@ -11,6 +11,19 @@ docker build -t layer1_node .
 and execute it with privileges:
 
 ```
-docker run --rm -it --privileged -v /var/run/docker.sock:/var/run/docker.sock -v root/.janctiond/renders:/root/.janctiond/renders layer1_node bash
+docker run --rm -it \
+  --privileged \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /root/.janctiond/renders:/root/.janctiond/renders \
+  layer1_node bash
+```
 
+Right now, the following lines are commented  at file `entryporint.sh` because the command doesn't executes correctly. For example, the mySQL database used to keep track of video rendering status is not created.
+
+So it is better to execute them manually until is fixed:
+
+```
+make install
+make init
+make testnet-add
 ```
