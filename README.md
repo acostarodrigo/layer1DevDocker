@@ -23,7 +23,12 @@ Right now, the following lines are commented  at file `entryporint.sh` because t
 So it is better to execute them manually until is fixed:
 
 ```
+# compiles and installs the layer 1 node
 make install
+
+# configures the node to be a video rendering node
 make init
+
+# joins the node to the current testnet
 make testnet-add
 ```
